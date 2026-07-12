@@ -296,7 +296,7 @@ class HomeVC: UIViewController {
                     constant: 10
                 ),
                 transactionsTableView.leadingAnchor.constraint(
-                    equalTo: view.leadingAnchor,
+                    equalTo: contentView.leadingAnchor,
                     constant: 20
                 ),
                 transactionsTableView.trailingAnchor.constraint(
@@ -305,7 +305,7 @@ class HomeVC: UIViewController {
                 ),
                 transactionsTableView.bottomAnchor.constraint(
                     equalTo: contentView.bottomAnchor,
-                    constant: 20                ),
+                    constant: -20                ),
                 
                 transactionsTableView.heightAnchor.constraint(equalToConstant: 275)
 
