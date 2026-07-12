@@ -12,16 +12,15 @@
 		EC0D44FE2FFD8A1A00488FE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0D44E02FFD8A1A00488FE5 /* AppDelegate.swift */; };
 		EC0D44FF2FFD8A1A00488FE5 /* TrustBank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC0D44E42FFD8A1A00488FE5 /* TrustBank.xcdatamodeld */; };
 		EC0D45012FFD8A1A00488FE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0D44E62FFD8A1A00488FE5 /* SceneDelegate.swift */; };
-		EC0D45092FFD9B9700488FE5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC0D45082FFD9B9700488FE5 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC03B4183003A59600338FE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC0D44E02FFD8A1A00488FE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC0D44E12FFD8A1A00488FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC0D44E62FFD8A1A00488FE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EC0D44E72FFD8A1A00488FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC0D44E82FFD8A1A00488FE5 /* TrustBank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrustBank.xcdatamodel; sourceTree = "<group>"; };
-		EC0D45072FFD9B9700488FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		ECADCEB22FF54D6C00DF51E7 /* TrustBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrustBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -47,13 +46,13 @@
 		EC0D45022FFD97D400488FE5 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				EC03B4183003A59600338FE1 /* Info.plist */,
 				EC0D44E12FFD8A1A00488FE5 /* Assets.xcassets */,
 				EC0D44E32FFD8A1A00488FE5 /* LaunchScreen.storyboard */,
 				EC0D44E62FFD8A1A00488FE5 /* SceneDelegate.swift */,
 				EC0D44E42FFD8A1A00488FE5 /* TrustBank.xcdatamodeld */,
 				ECADCEB32FF54D6C00DF51E7 /* Products */,
 				EC0D44E02FFD8A1A00488FE5 /* AppDelegate.swift */,
-				EC0D45082FFD9B9700488FE5 /* Info.plist */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -140,7 +139,6 @@
 			files = (
 				EC0D44E92FFD8A1A00488FE5 /* Assets.xcassets in Resources */,
 				EC0D44EB2FFD8A1A00488FE5 /* LaunchScreen.storyboard in Resources */,
-				EC0D45092FFD9B9700488FE5 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,15 +166,6 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		EC0D45082FFD9B9700488FE5 /* Info.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EC0D45072FFD9B9700488FE5 /* Base */,
-			);
-			name = Info.plist;
-			path = /Users/trainee/Desktop/TrustBank/App;
-			sourceTree = "<absolute>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -189,7 +178,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = /Users/trainee/Desktop/TrustBank/App/Base.lproj/Info.plist;
+				INFOPLIST_FILE = /Users/trainee/Desktop/TrustBank/App/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -220,7 +209,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = /Users/trainee/Desktop/TrustBank/App/Base.lproj/Info.plist;
+				INFOPLIST_FILE = /Users/trainee/Desktop/TrustBank/App/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
