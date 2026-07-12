@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="f3E-nA-92d">
+                                <rect key="frame" x="114.66666666666667" y="210" width="163.66666666666663" height="432"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trust Bank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFR-Ur-lbV">
+                                <rect key="frame" x="131.66666666666666" y="662" width="129.99999999999997" height="32"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" red="0.039215686274509803" green="0.12156862745098039" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure. Simple. Yours." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWF-oC-PZd">
+                                <rect key="frame" x="124" y="702" width="145" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading your account…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="get-1G-9uh">
+                                <rect key="frame" x="126.00000000000001" y="923" width="141.33333333333337" height="15.666666666666629"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aFR-Ur-lbV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FiL-aZ-H7K"/>
+                            <constraint firstItem="f3E-nA-92d" firstAttribute="centerX" secondItem="aFR-Ur-lbV" secondAttribute="centerX" id="HZY-fU-lXb"/>
+                            <constraint firstItem="get-1G-9uh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Krz-Te-Xpn"/>
+                            <constraint firstItem="bWF-oC-PZd" firstAttribute="top" secondItem="aFR-Ur-lbV" secondAttribute="bottom" constant="8" id="RyT-7M-uwT"/>
+                            <constraint firstItem="f3E-nA-92d" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Tdr-DF-5XE"/>
+                            <constraint firstItem="f3E-nA-92d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="114.66666666666669" id="Url-LF-kn6"/>
+                            <constraint firstItem="aFR-Ur-lbV" firstAttribute="top" secondItem="f3E-nA-92d" secondAttribute="bottom" constant="20" id="YuZ-LO-IFd"/>
+                            <constraint firstItem="get-1G-9uh" firstAttribute="top" secondItem="bWF-oC-PZd" secondAttribute="bottom" constant="204" id="Z4D-zx-osj"/>
+                            <constraint firstItem="bWF-oC-PZd" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="e8k-Ux-VMd"/>
+                            <constraint firstItem="f3E-nA-92d" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="eUx-q7-Iqj"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="432" height="432"/>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
