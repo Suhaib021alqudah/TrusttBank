@@ -8,7 +8,8 @@
 import UIKit
 
 class HomeVC: UIViewController {
-
+    let scrollView = UIScrollView()
+    let contentView = UIView()
     let greeting = UILabel()
     let userName = UILabel()
     let notificationButton = UIButton()
@@ -86,34 +87,68 @@ class HomeVC: UIViewController {
         configRecentTransactions()
         configSeeAllTransactions()
         configTransactionsTableView()
+        configScrollView()
+
     }
 
     func setupHierarchy() {
-        view.addSubview(greeting)
-        view.addSubview(userName)
-        view.addSubview(notificationButton)
-        view.addSubview(visaCard)
-        view.addSubview(vStack)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+
+        contentView.addSubview(greeting)
+        contentView.addSubview(userName)
+        contentView.addSubview(notificationButton)
+        contentView.addSubview(visaCard)
+        contentView.addSubview(vStack)
         visaCard.addSubview(circle)
-        view.addSubview(rowActions)
-        view.addSubview(cardStack)
-        view.addSubview(cardCollection)
-        view.addSubview(transactionsTableView)
-        view.addSubview(recentTransactions)
-        view.addSubview(seeAllTransactions)
-        view.addSubview(transactionsTableView)
+        visaCard.addSubview(vStack)
+        contentView.addSubview(rowActions)
+        contentView.addSubview(cardStack)
+        contentView.addSubview(cardCollection)
+        contentView.addSubview(transactionsTableView)
+        contentView.addSubview(recentTransactions)
+        contentView.addSubview(seeAllTransactions)
     }
 
     func setupLayout() {
 
         NSLayoutConstraint.activate(
             [
+                scrollView.topAnchor.constraint(
+                    equalTo: view.safeAreaLayoutGuide.topAnchor
+                ),
+                scrollView.leadingAnchor.constraint(
+                    equalTo: view.leadingAnchor
+                ),
+                scrollView.trailingAnchor.constraint(
+                    equalTo: view.trailingAnchor
+                ),
+                scrollView.bottomAnchor.constraint(
+                    equalTo: view.bottomAnchor
+                ),
+
+                contentView.topAnchor.constraint(
+                    equalTo: scrollView.contentLayoutGuide.topAnchor
+                ),
+                contentView.leadingAnchor.constraint(
+                    equalTo: scrollView.contentLayoutGuide.leadingAnchor
+                ),
+                contentView.trailingAnchor.constraint(
+                    equalTo: scrollView.contentLayoutGuide.trailingAnchor
+                ),
+                contentView.bottomAnchor.constraint(
+                    equalTo: scrollView.contentLayoutGuide.bottomAnchor
+                ),
+                contentView.widthAnchor.constraint(
+                    equalTo: scrollView.frameLayoutGuide.widthAnchor
+                ),
+
                 greeting.topAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.topAnchor,
-                    constant: -50
+                    equalTo: contentView.topAnchor,
+
                 ),
                 greeting.leadingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+                    equalTo: contentView.leadingAnchor,
                     constant: 20
                 ),
 
@@ -123,19 +158,31 @@ class HomeVC: UIViewController {
                 ),
 
                 userName.leadingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+                    equalTo: contentView.leadingAnchor,
                     constant: 20
                 ),
 
                 notificationButton.trailingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                    equalTo: contentView.trailingAnchor,
                     constant: -20
                 ),
                 notificationButton.widthAnchor.constraint(equalToConstant: 40),
                 notificationButton.heightAnchor.constraint(equalToConstant: 40),
                 notificationButton.topAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.topAnchor,
-                    constant: -46
+                    equalTo: contentView.topAnchor
+                ),
+
+                cardStack.topAnchor.constraint(
+                    equalTo: rowActions.bottomAnchor,
+                    constant: 23
+                ),
+                cardStack.leadingAnchor.constraint(
+                    equalTo: contentView.leadingAnchor,
+                    constant: 20
+                ),
+                cardStack.trailingAnchor.constraint(
+                    equalTo: contentView.trailingAnchor,
+                    constant: -20
                 ),
 
                 visaCard.topAnchor.constraint(
@@ -143,11 +190,11 @@ class HomeVC: UIViewController {
                     constant: 14
                 ),
                 visaCard.leadingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+                    equalTo: contentView.leadingAnchor,
                     constant: 20
                 ),
                 visaCard.trailingAnchor.constraint(
-                    equalTo: view.trailingAnchor,
+                    equalTo: contentView.trailingAnchor,
                     constant: -20
                 ),
 
@@ -184,11 +231,11 @@ class HomeVC: UIViewController {
                     constant: 24
                 ),
                 rowActions.leadingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+                    equalTo: contentView.leadingAnchor,
                     constant: 20
                 ),
                 rowActions.trailingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                    equalTo: contentView.trailingAnchor,
                     constant: -20
                 ),
                 myCards.topAnchor.constraint(
@@ -196,18 +243,18 @@ class HomeVC: UIViewController {
                     constant: 23
                 ),
                 myCards.leadingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+                    equalTo: contentView.leadingAnchor,
                     constant: 20
                 ),
 
                 rowActions.heightAnchor.constraint(equalToConstant: 90),
 
                 cardStack.leadingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+                    equalTo: contentView.leadingAnchor,
                     constant: 20
                 ),
                 cardStack.trailingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                    equalTo: contentView.trailingAnchor,
                     constant: -20
                 ),
                 cardCollection.topAnchor.constraint(
@@ -215,11 +262,11 @@ class HomeVC: UIViewController {
                     constant: 12
                 ),
                 cardCollection.leadingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+                    equalTo: contentView.leadingAnchor,
                     constant: 20
                 ),
                 cardCollection.trailingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                    equalTo: contentView.trailingAnchor,
                     constant: -20
                 ),
                 cardCollection.heightAnchor.constraint(equalToConstant: 110),
@@ -230,7 +277,7 @@ class HomeVC: UIViewController {
                 ),
 
                 recentTransactions.leadingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+                    equalTo: contentView.leadingAnchor,
                     constant: 20
                 ),
 
@@ -240,7 +287,7 @@ class HomeVC: UIViewController {
                 ),
 
                 seeAllTransactions.trailingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                    equalTo: contentView.trailingAnchor,
                     constant: -20
                 ),
 
@@ -253,12 +300,14 @@ class HomeVC: UIViewController {
                     constant: 20
                 ),
                 transactionsTableView.trailingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.trailingAnchor,
+                    equalTo: contentView.trailingAnchor,
                     constant: -20
                 ),
                 transactionsTableView.bottomAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.bottomAnchor
-                ),
+                    equalTo: contentView.bottomAnchor,
+                    constant: 20                ),
+                
+                transactionsTableView.heightAnchor.constraint(equalToConstant: 275)
 
             ]
 
@@ -337,6 +386,12 @@ class HomeVC: UIViewController {
         circle.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    func configScrollView() {
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.alwaysBounceVertical = true
+    }
     func configRow() {
         row.translatesAutoresizingMaskIntoConstraints = false
         row.isLayoutMarginsRelativeArrangement = true
@@ -424,8 +479,8 @@ class HomeVC: UIViewController {
 
         cardStack.addArrangedSubview(myCards)
         cardStack.addArrangedSubview(seeAll)
-        cardStack.translatesAutoresizingMaskIntoConstraints = false
         cardStack.isLayoutMarginsRelativeArrangement = true
+        cardStack.translatesAutoresizingMaskIntoConstraints = false
     }
 
     func configCardCollectionView() {
@@ -446,6 +501,7 @@ class HomeVC: UIViewController {
         transactionsTableView.dataSource = self
         transactionsTableView.delegate = self
         transactionsTableView.layer.cornerRadius = 18
+        transactionsTableView.isScrollEnabled = false
         transactionsTableView.register(
             CustomTableViewCell.self,
             forCellReuseIdentifier: "TransactionCell"
