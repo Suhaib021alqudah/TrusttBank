@@ -5,50 +5,63 @@
 //  Created by Trainee on 07/07/2026.
 //
 
-import UIKit
+import Foundation
 
-class NetworkManager {
+final class NetworkManager {
 
     static let shared = NetworkManager()
+    private init() {}
 
-    init() {}
+    func request<T: Decodable>(url: URL, responseType: T.Type) async throws
+        -> T
+    {
 
-    func fetchTransactions(
-        completion: @escaping (Result<[Transaction], Error>) -> Void
-    ) {
+        do {
 
-        let urlString =
-            "https://6a451378aab3faec3f695cbf.mockapi.io/transactions"
+            let (data, response) = try await URLSession.shared.data(from: url)
 
-        guard let url = URL(string: urlString) else { return }
-
-        URLSession.shared.dataTask(with: url) { data, response, error in
-
-            if let error = error {
-                completion(.failure(error))
-                return
+            // MARK: - HTTP Response Errors
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw NetworkError.invalidResponse
             }
-
-            guard let data = data else {
-                let noDataError = NSError(
-                    domain: "",
-                    code: -1,
-                    userInfo: [NSLocalizedDescriptionKey: "No data received"]
-                )
-                completion(.failure(noDataError))
-                return
+            guard 200...299 ~= httpResponse.statusCode else {
+                throw NetworkError.badStatusCode(httpResponse.statusCode)
             }
-
             do {
-                let decodedTransactions = try JSONDecoder().decode(
-                    [Transaction].self,
-                    from: data
-                )
-                completion(.success(decodedTransactions))
+                return try JSONDecoder().decode(responseType, from: data)
             } catch {
-                completion(.failure(error))
+                throw NetworkError.decodingFailed(error)
             }
 
-        }.resume()
+        }
+        // MARK: - Network Errors
+        
+    
+        catch is CancellationError {
+            throw NetworkError.cancelled
+        } catch let urlError as URLError {
+
+            switch urlError.code {
+
+            case .notConnectedToInternet:
+                throw NetworkError.noInternet
+
+            case .timedOut:
+                throw NetworkError.timeout
+
+            case .cancelled:
+                throw NetworkError.cancelled
+
+            default:
+                throw NetworkError.unknown(urlError)
+            }
+
+        } catch let networkError as NetworkError {
+            throw networkError
+        } catch {
+            throw NetworkError.unknown(error)
+        }
     }
+
 }
