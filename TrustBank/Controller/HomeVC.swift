@@ -73,6 +73,8 @@ class HomeVC: UIViewController {
 
     var transactions: [Transaction] = []
 
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -131,7 +133,6 @@ class HomeVC: UIViewController {
     func setupLayout() {
         NSLayoutConstraint.activate([
 
-
             scrollView.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor
             ),
@@ -168,7 +169,6 @@ class HomeVC: UIViewController {
                 equalTo: scrollView.frameLayoutGuide.widthAnchor
             ),
 
-
             greeting.topAnchor.constraint(
                 equalTo: contentView.topAnchor
             ),
@@ -204,7 +204,6 @@ class HomeVC: UIViewController {
             notificationButton.heightAnchor.constraint(
                 equalToConstant: 40
             ),
-
 
             visaCard.topAnchor.constraint(
                 equalTo: userName.bottomAnchor,
@@ -269,7 +268,6 @@ class HomeVC: UIViewController {
                 equalToConstant: 100
             ),
 
-
             rowActions.topAnchor.constraint(
                 equalTo: visaCard.bottomAnchor,
                 constant: 24
@@ -289,7 +287,6 @@ class HomeVC: UIViewController {
                 equalToConstant: 90
             ),
 
-
             cardStack.topAnchor.constraint(
                 equalTo: rowActions.bottomAnchor,
                 constant: 23
@@ -304,7 +301,6 @@ class HomeVC: UIViewController {
                 equalTo: contentView.trailingAnchor,
                 constant: -20
             ),
-
 
             cardCollection.topAnchor.constraint(
                 equalTo: cardStack.bottomAnchor,
@@ -325,7 +321,6 @@ class HomeVC: UIViewController {
                 equalToConstant: 110
             ),
 
-
             recentTransactions.topAnchor.constraint(
                 equalTo: cardCollection.bottomAnchor,
                 constant: 36
@@ -344,7 +339,6 @@ class HomeVC: UIViewController {
                 equalTo: contentView.trailingAnchor,
                 constant: -20
             ),
-
 
             transactionsTableView.topAnchor.constraint(
                 equalTo: recentTransactions.bottomAnchor,
@@ -368,7 +362,7 @@ class HomeVC: UIViewController {
             transactionsTableView.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor,
                 constant: -20
-            )
+            ),
         ])
     }
 
@@ -586,21 +580,25 @@ class HomeVC: UIViewController {
             forCellReuseIdentifier: "TransactionCell"
         )
     }
-    
 
     func loadTransactions() {
+        let decoder = JSONDecoder()
+        
         Task {
             do {
-                guard let url = URL(
-                    string:
-                        "https://6a451378aab3faec3f695cbf.mockapi.io/transactions"
-                ) else {
+                guard
+                    let url = URL(
+                        string:
+                            "https://6a451378aab3faec3f695cbf.mockapi.io/transactions"
+                    )
+                else {
                     return
                 }
 
                 let result = try await NetworkManager.shared.request(
                     url: url,
-                    responseType: [Transaction].self
+                    responseType: [Transaction].self,
+                    decoder: decoder
                 )
 
                 await MainActor.run {
@@ -613,7 +611,6 @@ class HomeVC: UIViewController {
         }
     }
 }
-
 
 extension HomeVC: UICollectionViewDataSource {
 
@@ -629,17 +626,18 @@ extension HomeVC: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
 
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BankCardCell.identifier,
-            for: indexPath
-        ) as? BankCardCell else {
+        guard
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: BankCardCell.identifier,
+                for: indexPath
+            ) as? BankCardCell
+        else {
             return UICollectionViewCell()
         }
 
         return cell
     }
 }
-
 
 extension HomeVC: UITableViewDataSource {
 
@@ -655,10 +653,12 @@ extension HomeVC: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "TransactionCell",
-            for: indexPath
-        ) as? CustomTableViewCell else {
+        guard
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "TransactionCell",
+                for: indexPath
+            ) as? CustomTableViewCell
+        else {
             return UITableViewCell()
         }
 
@@ -668,7 +668,6 @@ extension HomeVC: UITableViewDataSource {
         return cell
     }
 }
-
 
 extension HomeVC: UITableViewDelegate {
 
@@ -699,4 +698,3 @@ extension HomeVC: UITableViewDelegate {
         )
     }
 }
-
