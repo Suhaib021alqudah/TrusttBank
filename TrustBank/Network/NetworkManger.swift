@@ -7,13 +7,13 @@
 
 import Foundation
 
-final class NetworkManager {
+final class NetworkManager : NetworkManagerProtocol {
 
     static let shared = NetworkManager()
     private init() {}
 
     func request<T: Decodable>(
-        url: URL,
+        request: URLRequest,
         responseType: T.Type,
         decoder: JSONDecoder = JSONDecoder()
     ) async throws
@@ -22,7 +22,7 @@ final class NetworkManager {
 
         do {
 
-            let (data, response) = try await URLSession.shared.data(from: url)
+            let (data, response) = try await URLSession.shared.data(for: request)
 
             // MARK: - HTTP Response Errors
 
